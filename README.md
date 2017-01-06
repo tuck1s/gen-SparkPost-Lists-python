@@ -1,18 +1,19 @@
-# gen-SparkPost-Lists-php
+# gen-SparkPost-Lists-python
+This is a Python version of the [original PHP tool](https://github.com/tuck1s/gen-SparkPost-Lists-php).
+
 Simple command-line tool to create example, randomised Suppression and Recipient Lists for import into SparkPost (in .CSV format).
 
 This is useful for any testing that requires lists of specified size, as the email-address uniqueness is checked and enforced.
 Redirect output to a file with >myfile.csv, then upload the file using the SparkPost web user interface.
 
 ## Usage
-
 ```
 NAME
-   ./gen-sparkpost-lists.php
+   ./gen-sparkpost-lists.py
    Generate a random, SparkPost-compatible Recipient- or Suppression-List for .CSV import.
 
 SYNOPSIS
-  ./gen-sparkpost-lists.php recip|supp|help [count [domain]]
+  ./gen-sparkpost-lists.py recip|supp|help [count [domain]]
 
 OPTIONAL PARAMETERS
     count = number of records to generate (default 10)
@@ -20,20 +21,18 @@ OPTIONAL PARAMETERS
 ```
 
 ##Example output
-
 ```
-./gen-sparkpost-lists.php recip 10 
+./gen-sparkpost-lists.py recip 10
 email,name,return_path,metadata,substitution_data,tags
-anon45647117@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon16733324@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon77744262@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon29148022@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon01043286@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon38310735@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon30810724@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon89651181@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon52939679@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon54639748@sedemo.sink.sparkpostmail.com,"Fred Bloggs",bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon93115417@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon77717755@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon19892920@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon65699942@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon87920342@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon28301908@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon60377150@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon98606741@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon58551008@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
 ```
 
 ##Importing your lists
