@@ -21,19 +21,28 @@ OPTIONAL PARAMETERS
 ```
 
 ##Example output
-```
-./gen-sparkpost-lists.py recip 10
+```bash
+$ ./gen-sparkpost-lists.py recip 10
 email,name,return_path,metadata,substitution_data,tags
-anon93115417@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon77717755@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon19892920@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon65699942@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon87920342@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon28301908@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon60377150@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon98606741@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
-anon58551008@sedemo.sink.sparkpostmail.com,Fred Bloggs,bounce@sedemo.sink.sparkpostmail.com,"{""foo"": ""bar""}","{""member"": ""Platinum"", ""region"": ""US""}",
+anon65068068@sedemo.sink.sparkpostmail.com,William Williams,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 90153123}","{""memberType"": ""bronze"", ""state"": ""DE""}",
+anon00645960@sedemo.sink.sparkpostmail.com,Aracely Gibson,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 16448501}","{""memberType"": ""silver"", ""state"": ""OK""}",
+anon89927931@sedemo.sink.sparkpostmail.com,Angela Monroe,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 12142912}","{""memberType"": ""gold"", ""state"": ""MD""}",
+anon17910948@sedemo.sink.sparkpostmail.com,Richard Leber,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 77532118}","{""memberType"": ""bronze"", ""state"": ""TX""}",
+anon49708069@sedemo.sink.sparkpostmail.com,Joyce Morrison,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 47869024}","{""memberType"": ""gold"", ""state"": ""GA""}",
+anon49376624@sedemo.sink.sparkpostmail.com,Jaime Whitley,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 83300287}","{""memberType"": ""gold"", ""state"": ""NM""}",
+anon48442130@sedemo.sink.sparkpostmail.com,Richard Jones,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 98224223}","{""memberType"": ""platinum"", ""state"": ""TN""}",
+anon85110754@sedemo.sink.sparkpostmail.com,Diana Fulkerson,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 24351711}","{""memberType"": ""bronze"", ""state"": ""CA""}",
+anon63355536@sedemo.sink.sparkpostmail.com,Christopher Nichols,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 59126359}","{""memberType"": ""gold"", ""state"": ""AZ""}",
+anon65786481@sedemo.sink.sparkpostmail.com,Alicia Camacho,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 98630101}","{""memberType"": ""platinum"", ""state"": ""IL""}",
+stevet-macbook-air:gen-sparkpost-lists stuck$ 
 ```
+
+The email addresses 'anonxxx' are checked for uniqueness, to avoid repeats.
+The human-readable names are selected using the 'names' package, described below (it makes use of real US census data).
+Metadata and substitution data are randomised examples only.
+
+## External dependencies
+https://github.com/treyhunner/names
 
 ##Importing your lists
 See the following support articles:
