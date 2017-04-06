@@ -44,12 +44,12 @@ Metadata and substitution data are randomised examples only.
 ## External dependencies
 https://github.com/treyhunner/names
 
-##Importing your lists
+## Importing your lists
 See the following support articles:
 
 [Using Suppression Lists](https://support.sparkpost.com/customer/portal/articles/1929891)
 
 [Uploading and Storing a Recipient List as a CSV file](https://support.sparkpost.com/customer/portal/articles/2351320)
 
-##How do I modify user data, e.g. name, return_path, metadata, substitution_data, tags?
+## How do I modify user data, e.g. name, return_path, metadata, substitution_data, tags?
 This is not command-line parameterized, but the code is meant to be easy to change and extend.
