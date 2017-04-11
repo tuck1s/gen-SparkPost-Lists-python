@@ -39,7 +39,8 @@ stevet-macbook-air:gen-sparkpost-lists stuck$
 
 The email addresses 'anonxxx' are checked for uniqueness, to avoid repeats.
 The human-readable names are selected using the 'names' package, described below (it makes use of real US census data).
-Metadata and substitution data are randomised examples only.
+Metadata, substitution data, and tags are randomised examples only.
+
 
 ## External dependencies
 https://github.com/treyhunner/names
