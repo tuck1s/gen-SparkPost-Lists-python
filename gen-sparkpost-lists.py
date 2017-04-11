@@ -47,10 +47,12 @@ def randomRecip(domain, digits, ensureUnique):
     ensureUnique.add(localpartnum)
     return 'anon'+str(localpartnum).zfill(digits)+'@'+domain    # Pad the number out to a fixed length of digits
 
+# Generate some realistic random metadata, such as a customer ID
 def randomMeta(Tmax):
     exampleMeta = {'custID': random.randrange(Tmax)}    # Generate a pseudorandom customer ID, for example
     return json.dumps(exampleMeta)
 
+# Generate some realistic random substitution data, such as a member type and US state
 def randomSubData():
     # US Postal code list
     states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA',
@@ -63,9 +65,19 @@ def randomSubData():
         'state': random.choice(states)}
     return json.dumps(exampleSubData)
 
+# Compose a real readable name from the pre-built two-part list l.  Randomise first and last names separately, giving more variety
 def randomName(l):
-    # Compose a real readable name from the two-part list given.  Randomise first and last names separately, giving more variety
     return random.choice(l)['first']+' '+random.choice(l)['last']
+
+# Compose a random number of tags, in random shuffled order, from a preset short list.
+# List of varieties is taken from: http://www.californiaavocado.com/how-tos/avocado-varieties.aspx
+def randomTags():
+    avocadoVarieties = ['bacon', 'fuerte', 'gwen', 'hass', 'lamb hass', 'pinkerton', 'reed', 'zutano']
+    k = random.randrange(0, len(avocadoVarieties))
+    t = avocadoVarieties[0:k]
+    random.shuffle(t)
+    return json.dumps(t)
+
 
 # -----------------------------------------------------------------------------------------
 # Main code
@@ -126,7 +138,7 @@ elif sys.argv[1] == 'recip':
         dataRow.append('bounce@' + domain)      # simple fixed value for testing
         dataRow.append(randomMeta(Tmax))
         dataRow.append(randomSubData())
-        dataRow.append('')                      # Tags not currently filled
+        dataRow.append(randomTags())
         fObj.writerow(dataRow)
 else:
     print("Invalid option - stopping.")
