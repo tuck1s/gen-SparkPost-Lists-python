@@ -20,7 +20,7 @@ OPTIONAL PARAMETERS
     domain = recipient domain to generate records for (default sedemo.sink.sparkpostmail.com)
 ```
 
-##Example output
+## Example output
 ```bash
 $ ./gen-sparkpost-lists.py recip 10
 email,name,return_path,metadata,substitution_data,tags
@@ -42,7 +42,6 @@ The email addresses 'anonxxx' are checked for uniqueness, to avoid repeats.
 The human-readable names are selected using the 'names' package, described below (it makes use of real US census data).
 
 Metadata, substitution data, and tags are randomised examples only.
-
 
 ## External dependencies
 https://github.com/treyhunner/names
