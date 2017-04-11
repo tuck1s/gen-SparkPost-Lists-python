@@ -42,7 +42,7 @@ The human-readable names are selected using the 'names' package, described below
 
 Metadata, substitution data, and tags are randomised examples only:
 - metadata is a randomised customer ID
-- substitution_data contains a random memberType and random US stage
+- substitution_data contains a random memberType and random US postal-code / state
 - tags contain zero or more avocado varieties
 
 ## External dependencies
