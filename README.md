@@ -17,23 +17,23 @@ SYNOPSIS
 
 OPTIONAL PARAMETERS
     count = number of records to generate (default 10)
-    domain = recipient domain to generate records for (default sedemo.sink.sparkpostmail.com)
+    domain = recipient domain to generate records for (default demo.sink.sparkpostmail.com)
 ```
 
 ## Example output
 ```bash
 $ ./gen-sparkpost-lists.py recip 10
 email,name,return_path,metadata,substitution_data,tags
-anon35901572@sedemo.sink.sparkpostmail.com,Angela Rubin,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 27438690}","{""memberType"": ""platinum"", ""state"": ""ME""}",[]
-anon03524931@sedemo.sink.sparkpostmail.com,Keisha Forehand,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 88667120}","{""memberType"": ""gold"", ""state"": ""PA""}","[""gwen"", ""bacon"", ""lamb hass"", ""hass"", ""reed"", ""pinkerton"", ""fuerte""]"
-anon94961144@sedemo.sink.sparkpostmail.com,Ron Jenkins,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 35676181}","{""memberType"": ""bronze"", ""state"": ""MA""}","[""fuerte"", ""gwen"", ""bacon""]"
-anon96298949@sedemo.sink.sparkpostmail.com,Diane Lucia,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 24033998}","{""memberType"": ""gold"", ""state"": ""VT""}","[""pinkerton"", ""gwen"", ""hass"", ""fuerte"", ""bacon"", ""lamb hass""]"
-anon72308190@sedemo.sink.sparkpostmail.com,Jorge Dias,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 76123717}","{""memberType"": ""platinum"", ""state"": ""NH""}",[]
-anon65280789@sedemo.sink.sparkpostmail.com,Chris Young,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 63789416}","{""memberType"": ""platinum"", ""state"": ""GU""}","[""fuerte"", ""gwen"", ""hass"", ""pinkerton"", ""lamb hass"", ""reed"", ""bacon""]"
-anon79839806@sedemo.sink.sparkpostmail.com,Kurt Vonsoosten,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 91461763}","{""memberType"": ""silver"", ""state"": ""MS""}","[""gwen"", ""fuerte"", ""bacon"", ""hass""]"
-anon66603972@sedemo.sink.sparkpostmail.com,Neal Preston,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 76760251}","{""memberType"": ""gold"", ""state"": ""MT""}","[""bacon"", ""fuerte"", ""reed"", ""pinkerton"", ""hass"", ""lamb hass"", ""gwen""]"
-anon44156895@sedemo.sink.sparkpostmail.com,Edna Devers,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 81455813}","{""memberType"": ""platinum"", ""state"": ""AK""}","[""bacon"", ""gwen"", ""fuerte""]"
-anon32881142@sedemo.sink.sparkpostmail.com,Carlos Lucia,bounce@sedemo.sink.sparkpostmail.com,"{""custID"": 19844619}","{""memberType"": ""bronze"", ""state"": ""SC""}","[""gwen"", ""hass"", ""fuerte"", ""bacon""]"
+anon35901572@demo.sink.sparkpostmail.com,Angela Rubin,bounce@demo.sink.sparkpostmail.com,"{""custID"": 27438690}","{""memberType"": ""platinum"", ""state"": ""ME""}",[]
+anon03524931@demo.sink.sparkpostmail.com,Keisha Forehand,bounce@demo.sink.sparkpostmail.com,"{""custID"": 88667120}","{""memberType"": ""gold"", ""state"": ""PA""}","[""gwen"", ""bacon"", ""lamb hass"", ""hass"", ""reed"", ""pinkerton"", ""fuerte""]"
+anon94961144@demo.sink.sparkpostmail.com,Ron Jenkins,bounce@demo.sink.sparkpostmail.com,"{""custID"": 35676181}","{""memberType"": ""bronze"", ""state"": ""MA""}","[""fuerte"", ""gwen"", ""bacon""]"
+anon96298949@demo.sink.sparkpostmail.com,Diane Lucia,bounce@demo.sink.sparkpostmail.com,"{""custID"": 24033998}","{""memberType"": ""gold"", ""state"": ""VT""}","[""pinkerton"", ""gwen"", ""hass"", ""fuerte"", ""bacon"", ""lamb hass""]"
+anon72308190@demo.sink.sparkpostmail.com,Jorge Dias,bounce@demo.sink.sparkpostmail.com,"{""custID"": 76123717}","{""memberType"": ""platinum"", ""state"": ""NH""}",[]
+anon65280789@demo.sink.sparkpostmail.com,Chris Young,bounce@demo.sink.sparkpostmail.com,"{""custID"": 63789416}","{""memberType"": ""platinum"", ""state"": ""GU""}","[""fuerte"", ""gwen"", ""hass"", ""pinkerton"", ""lamb hass"", ""reed"", ""bacon""]"
+anon79839806@demo.sink.sparkpostmail.com,Kurt Vonsoosten,bounce@demo.sink.sparkpostmail.com,"{""custID"": 91461763}","{""memberType"": ""silver"", ""state"": ""MS""}","[""gwen"", ""fuerte"", ""bacon"", ""hass""]"
+anon66603972@demo.sink.sparkpostmail.com,Neal Preston,bounce@demo.sink.sparkpostmail.com,"{""custID"": 76760251}","{""memberType"": ""gold"", ""state"": ""MT""}","[""bacon"", ""fuerte"", ""reed"", ""pinkerton"", ""hass"", ""lamb hass"", ""gwen""]"
+anon44156895@demo.sink.sparkpostmail.com,Edna Devers,bounce@demo.sink.sparkpostmail.com,"{""custID"": 81455813}","{""memberType"": ""platinum"", ""state"": ""AK""}","[""bacon"", ""gwen"", ""fuerte""]"
+anon32881142@demo.sink.sparkpostmail.com,Carlos Lucia,bounce@demo.sink.sparkpostmail.com,"{""custID"": 19844619}","{""memberType"": ""bronze"", ""state"": ""SC""}","[""gwen"", ""hass"", ""fuerte"", ""bacon""]"
 ```
 
 The email addresses 'anonxxx' are ensured unique, so that there are no repeats.

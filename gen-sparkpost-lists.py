@@ -23,12 +23,12 @@
 from __future__ import print_function
 import sys, os.path, csv, random, json, names
 
-countDefault = 10;                                      # Default length of list
-domainDefault = 'sedemo.sink.sparkpostmail.com';        # Safe default
+countDefault = 10                                       # Default length of list
+domainDefault = 'demo.sink.sparkpostmail.com'           # Safe default
 
 def printHelp():
-    progName = sys.argv[0];
-    shortProgName = os.path.basename(progName);
+    progName = sys.argv[0]
+    shortProgName = os.path.basename(progName)
     print('\nNAME')
     print('   ' + progName)
     print('   Generate a random, SparkPost-compatible Recipient- or Suppression-List for .CSV import.\n')
@@ -48,26 +48,41 @@ def randomRecip(domain, digits, ensureUnique):
     return 'anon'+str(localpartnum).zfill(digits)+'@'+domain    # Pad the number out to a fixed length of digits
 
 # Generate some realistic random metadata, such as a customer ID
-def randomMeta(Tmax):
-    exampleMeta = {'custID': random.randrange(Tmax)}    # Generate a pseudorandom customer ID, for example
-    return json.dumps(exampleMeta)
+def randomCustID(Tmax):
+    return random.randrange(Tmax)
 
-# Generate some realistic random substitution data, such as a member type and US state
-def randomSubData():
+def randomUSState():
     # US Postal code list
     states = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA',
               'KS', 'KY', 'LA', 'ME', 'MD', 'MH', 'MA', 'MI', 'FM', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM',
               'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA',
               'VI', 'WA', 'WV', 'WI', 'WY']
+    return random.choice(states)
+
+def randomMemberType():
     tiers = ['bronze', 'silver', 'gold', 'platinum']
+    return random.choice(tiers)
+
+# Return JSON-formatted data suitable for SparkPost .csv fields
+def randomMeta(Tmax):
+    exampleMeta = {'custID': randomCustID(Tmax)}    # Generate a pseudorandom customer ID, for example
+    return json.dumps(exampleMeta)
+
+def randomSubData():
     exampleSubData = {
-        'memberType': random.choice(tiers),
-        'state': random.choice(states)}
+        'memberType': randomMemberType(),
+        'state': randomUSState()}
     return json.dumps(exampleSubData)
+
+def randomFirstName(l):
+    return random.choice(l)['first']
+
+def randomLastName(l):
+    return random.choice(l)['last']
 
 # Compose a real readable name from the pre-built two-part list l.  Randomise first and last names separately, giving more variety
 def randomName(l):
-    return random.choice(l)['first']+' '+random.choice(l)['last']
+    return randomFirstName(l)+' '+randomLastName(l)
 
 # Compose a random number of tags, in random shuffled order, from a preset short list.
 # List of varieties is taken from: http://www.californiaavocado.com/how-tos/avocado-varieties.aspx
@@ -90,7 +105,7 @@ numDigits = 8                           # Number of random local-part digits to 
 Tmax = 10**numDigits
 
 # Check list-type and argument count
-if len(sys.argv) < 2 or not(sys.argv[1] == 'supp' or sys.argv[1] == 'recip'):
+if len(sys.argv) < 2 or not(sys.argv[1] == 'supp' or sys.argv[1] == 'recip' or sys.argv[1] == 'ongage'):
     printHelp()
     exit(0)
 
@@ -140,5 +155,28 @@ elif sys.argv[1] == 'recip':
         dataRow.append(randomSubData())
         dataRow.append(randomTags())
         fObj.writerow(dataRow)
+
+elif sys.argv[1] == 'ongage':
+    headerRow = ['email', 'first_name', 'last_name', 'region', 'contact_ID']
+    fObj = csv.writer(sys.stdout)
+    fObj.writerow(headerRow)
+
+    # Prepare a cache of actual, random names - this enables long lists to be built faster
+    nameList = []
+    for i in range(100):
+        nameList.append({'first': names.get_first_name(), 'last': names.get_last_name()})
+
+    # Generate the file on stdout
+    for i in range(0, count):
+        dataRow = []
+        dataRow.append(randomRecip(domain, numDigits, uniqFlags))       # email
+        dataRow.append(randomFirstName(nameList))
+        dataRow.append(randomLastName(nameList))
+        dataRow.append(randomUSState())
+        dataRow.append(randomCustID(Tmax))
+        fObj.writerow(dataRow)
+
+#email,address,country,first_name,last_name,gender,ip,language,phone,os,city,region,title,contact_ID,last_Browser,imageID,Last_click,Specialism,surveys_completed
+
 else:
     print("Invalid option - stopping.")
