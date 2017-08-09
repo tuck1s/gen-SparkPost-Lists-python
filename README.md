@@ -1,7 +1,7 @@
 # gen-SparkPost-Lists-python
 This is a Python version of the [original PHP tool](https://github.com/tuck1s/gen-SparkPost-Lists-php).
 
-Simple command-line tool to create example, randomised Suppression and Recipient Lists for import into SparkPost (in .CSV format).
+Creates example, randomised Suppression and Recipient Lists for import into SparkPost (in .CSV format).
 
 This is useful for any testing that requires lists of specified size, as the email-address uniqueness is checked and enforced.
 Redirect output to a file with >myfile.csv, then upload the file using the SparkPost web user interface.
@@ -44,6 +44,12 @@ Metadata, substitution data, and tags are randomised examples only:
 - metadata is a randomised customer ID
 - substitution_data contains a random memberType and random US postal-code / state
 - tags contain zero or more avocado varieties
+
+## Suppression List - updated format
+The suppression list output now reflects current (Aug 2017) recommended SparkPost .csv format, with columns
+`recipient,type,description`
+
+Subaccount is no longer a column in the file - instead it's selected at import-time via the SparkPost UI.
 
 ## External dependencies
 https://github.com/treyhunner/names

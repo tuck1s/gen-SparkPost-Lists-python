@@ -1,23 +1,4 @@
 #!/usr/bin/env python3
-#Generate random suppressions CSV file
-#Copyright  2017 SparkPost
-
-#Licensed under the Apache License, Version 2.0 (the "License");
-#you may not use this file except in compliance with the License.
-#You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-#Unless required by applicable law or agreed to in writing, software
-#distributed under the License is distributed on an "AS IS" BASIS,
-#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#See the License for the specific language governing permissions and
-#limitations under the License.
-
-#
-# Author: Steve Tuck (Updated: April 2017)
-#
-
 # External dependencies: https://github.com/treyhunner/names
 
 from __future__ import print_function
@@ -93,6 +74,9 @@ def randomTags():
     random.shuffle(t)
     return json.dumps(t)
 
+def randomSuppFlag():
+    f = ['transactional', 'non_transactional']
+    return random.choice(f)
 
 # -----------------------------------------------------------------------------------------
 # Main code
@@ -121,7 +105,7 @@ if count > Tmax:
     exit(1)
 
 if sys.argv[1] == 'supp':
-    headerRow = ['recipient', 'transactional', 'non_transactional', 'description', 'subaccount_id']
+    headerRow = ['recipient', 'type', 'description']
     fObj = csv.writer(sys.stdout)
     fObj.writerow(headerRow)
 
@@ -129,10 +113,8 @@ if sys.argv[1] == 'supp':
     for i in range(1, count):
         dataRow = []
         dataRow.append(randomRecip(domain, numDigits, uniqFlags))
-        dataRow.append('true')                  # Transactional flag - Change this as needed
-        dataRow.append('true')                  # Non-Transactional flag - Change this as needed
+        dataRow.append(randomSuppFlag())                  # type flag - Change this as needed
         dataRow.append('Example data import')
-        dataRow.append('0')                     # 0 = Master account
         fObj.writerow(dataRow)
 
 elif sys.argv[1] == 'recip':
@@ -175,8 +157,6 @@ elif sys.argv[1] == 'ongage':
         dataRow.append(randomUSState())
         dataRow.append(randomCustID(Tmax))
         fObj.writerow(dataRow)
-
-#email,address,country,first_name,last_name,gender,ip,language,phone,os,city,region,title,contact_ID,last_Browser,imageID,Last_click,Specialism,surveys_completed
 
 else:
     print("Invalid option - stopping.")
