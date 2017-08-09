@@ -110,7 +110,7 @@ if sys.argv[1] == 'supp':
     fObj.writerow(headerRow)
 
     # Generate the file on stdout, as the user can always redirect it into a file when needed
-    for i in range(1, count):
+    for i in range(0, count):
         dataRow = []
         dataRow.append(randomRecip(domain, numDigits, uniqFlags))
         dataRow.append(randomSuppFlag())                  # type flag - Change this as needed
