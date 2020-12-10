@@ -52,7 +52,15 @@ The suppression list output now reflects current (Aug 2017) recommended SparkPos
 Subaccount is no longer a column in the file - instead it's selected at import-time via the SparkPost UI.
 
 ## External dependencies
-https://github.com/treyhunner/names
+
+Project now includes a `Pipfile` for easier installation:
+
+```
+pip install pipenv
+pipenv install
+pipenv shell
+./gen-sparkpost-lists.py
+ ```
 
 ## Importing your lists
 See the following support articles:
